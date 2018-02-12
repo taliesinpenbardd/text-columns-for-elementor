@@ -1,12 +1,12 @@
 <?php 
 /**
- * Plugin Name: Bigtext for Elementor
- * Description: Bigtext for Elementor makes lines of text fit in width, thanks to Bitext JS (https://github.com/zachleat/BigText
+ * Plugin Name: Text columns for Elementor
+ * Description: Text columns for Elementor makes easy to create columns in a text, totally responsive.
  * Plugin URI: http://arthos.fr
  * Version: 1.0.0
  * Author: Arthos
  * Author URI: http://arthos.fr
- * Text Domain: bigtext4elementor
+ * Text Domain: textcolumns4elementor
  */
 if( ! defined( 'ABSPATH' ) ) exit;
 
@@ -27,9 +27,9 @@ class ElementorCustomWidget {
 
 	public function widgets_registered() {
 		if( defined( 'ELEMENTOR_PATH' ) && class_exists( 'Elementor\Widget_Base' ) ) {
-			$template_file = 'plugins/elementor/bigtext-for-elementor-widget.php';
+			$template_file = 'plugins/elementor/text-columns-for-elementor-widget.php';
 			if( ! $template_file || ! is_readable( $template_file ) ) {
-				$template_file = plugin_dir_path( __FILE__ ) . 'bigtext-for-elementor-widget.php';
+				$template_file = plugin_dir_path( __FILE__ ) . 'text-columns-for-elementor-widget.php';
 			}
 			if( $template_file && is_readable( $template_file ) ) {
 				require_once $template_file;
@@ -38,9 +38,8 @@ class ElementorCustomWidget {
 	}
 
 	public function enqueue_style_and_script() {
-		wp_enqueue_script( 'bigtext', plugins_url( 'js/bigtext.js', __FILE__ ), array( 'jquery' ) );
-		wp_enqueue_script( 'bigtext-for-elementor', plugins_url( 'js/bigtext-for-elementor.js', __FILE__ ), array( 'bigtext' ) );
-		wp_enqueue_style( 'bigtext', plugins_url( 'css/bigtext-for-elementor.css', __FILE__ ) );
+		// wp_enqueue_script( 'text-columns-for-elementor', plugins_url( 'js/text-columns-for-elementor.js', __FILE__ ), array() );
+		wp_enqueue_style( 'text-columns', plugins_url( 'css/text-columns-for-elementor.min.css', __FILE__ ) );
 	}
 
 }
